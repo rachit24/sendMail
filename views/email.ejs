@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Daily Love Dose</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./email.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .write{
+    color: aliceblue;
+  }
+    .heart{
+    width: 200px;
+    height: 200px;
+    background: red;
+    transform: rotate(45deg);
+    margin: 200px auto;
+    animation-name: beat;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    box-shadow: 0 0 100px red, inset 0 0 40px 40px red;
+  }
+  .heart:before,
+  .heart:after{
+    content:" ";
+    background-color: red;
+    border-radius: 50%;
+    height: 200px;
+    position: absolute;
+    width: 200px;
+    box-shadow: 0 0 30px red, inset 0 0 10px 20px red;
+  }
+  .heart:before{
+    top:-100px;
+    left: 0;
+  }
+  .heart:after{
+    left:-100px;
+    top: 0;
+  }
+
+  @keyframes beat{
+    0% {transform: rotate(45deg) scale(1,1);}
+    25% {transform: rotate(45deg) scale(0.8,0.8);}
+    50% {transform: rotate(45deg) scale(0.5,0.5);}
+    100% {transform: rotate(45deg) scale(1,1);}
+  }
+  
+</style>
+<!-- <body> -->
+  <body style="background-image: linear-gradient(to right,violet,indigo,blue,green,yellow,orange,red);">
+    <%if(limit!=3){%>
+      <center><h1 style="color: white;">I love you not only for what you are, but for what I am when I am with you. You deserve all the special things in this life.</h1></center>
+    <div class="shape heart">   
+      <div class="row">
+        <div class="offset-md-3 col-md-6 app-form">
+          <form action="/sendmail" method="POST" autocomplete="off">
+              <center><button type="submit" name="send_mail" class="btn btn-primary">Receive Gift</button></center>
+            </form>
+            </div>
+          <%}%>
+          <br/>
+          <%if(limit==3){%>
+            <div class="hide">
+              <center><h2 class="write">Done for Today</h2></center>
+              <form action="/verify" method="POST" autocomplete="off">
+                <center><label class="write" for="gcode">Enter verification Code (Ask from rachit😅)</label></center>
+                <center><input type="text" name="gcode" id="gcode"></center>
+                  <center><button type="submit" name="send_gcode" class="btn btn-primary">Verify</button></center>
+              </form>
+                <br/>
+              <form action="/code" method="POST" autocomplete="off">
+                  <center><button type="submit" name="send_gcode" class="btn btn-primary">Generate Code</button></center>
+              </form>
+      
+            </div>
+          <%}%>         
+          
+        </div>
+      </div>
+      <center><h1 style="color: white;">I Love You</h1></center>
+      
+      <br/> <br/>
+      
+      
+    </div>
+  </div>
+  
+</body>
+</html>

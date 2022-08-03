@@ -1,0 +1,38 @@
+
+.heart{
+  width: 200px;
+  height: 200px;
+  background: red;
+  transform: rotate(45deg);
+  margin: 200px auto;
+  animation-name: beat;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  box-shadow: 0 0 100px red, inset 0 0 40px 40px red;
+}
+.heart:before,
+.heart:after{
+  content:" ";
+  background-color: red;
+  border-radius: 50%;
+  height: 200px;
+  position: absolute;
+  width: 200px;
+  box-shadow: 0 0 30px red, inset 0 0 10px 20px red;
+}
+.heart:before{
+  top:-100px;
+  left: 0;
+}
+.heart:after{
+  left:-100px;
+  top: 0;
+}
+
+@keyframes beat{
+  0% {transform: rotate(45deg) scale(1,1);}
+  25% {transform: rotate(45deg) scale(0.8,0.8);}
+  50% {transform: rotate(45deg) scale(0.5,0.5);}
+  100% {transform: rotate(45deg) scale(1,1);}
+}
+
